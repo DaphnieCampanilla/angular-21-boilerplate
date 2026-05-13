@@ -171,7 +171,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             return ok();
         }
 
-        function forgetPassword() {
+        function forgotPassword() {
             const { email } = body;
             const account = accounts.find(x => x.email === email);
 

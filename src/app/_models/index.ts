@@ -1,3 +1,3 @@
+export * from './account';
 export * from './alert';
-export * from './alert-type'; 
 export * from './role';

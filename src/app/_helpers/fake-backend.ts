@@ -114,8 +114,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     alertService.info(
                         `<h4>Email Already Registered</h4>
                         <p>Your email ${account.email} is already registered.</p>
-                        <p>If you don't know your password please visit the <a href="${location.origin}/account/forgot-password">forgot password</a> page.</p>
-                        <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. A real backend would send a real email.</div>`,
+                        <p>If you don't know your password please visit the <a href="${location.origin}
+                        /account/forgot-password">forgot password</a> page.</p>
+                        <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. 
+                        A real backend would send a real email.</div>`,
                         { autoClose: false }
                     );
                 }, 1000);
@@ -150,7 +152,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     <p>Thanks for registering!</p>
                     <p>Please click the below link to verify your email address:</p>
                     <p><a href="${verifyUrl}">${verifyUrl}</a></p>
-                    <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. A real backend would send a real email.</div>`,
+                    <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. 
+                    A real backend would send a real email.</div>`,
                     { autoClose: false }
                 );
             }, 1000);
@@ -190,7 +193,8 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     `<h4>Reset Password Email</h4>
                     <p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
                     <p><a href="${resetUrl}">${resetUrl}</a></p>
-                    <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. A real backend would send a real email.</div>`,
+                    <div><strong>NOTE:</strong> The fake backend displayed this "email" so you can test without an api. 
+                    A real backend would send a real email.</div>`,
                     { autoClose: false }
                 );
             }, 1000);
@@ -214,7 +218,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const { token, password } = body;
             const account = accounts.find(x =>
                 !!x.resetToken && x.resetToken === token &&
-                new Date() < new Date(x.resetTokenExpires)
+                new Date() < new Date(x.resetTokenExpires)  
             );
 
             if (!account) return error('Invalid token');
@@ -397,3 +401,6 @@ export let fakeBackendProvider = {
     useClass: FakeBackendInterceptor,
     multi: true
 };
+
+
+

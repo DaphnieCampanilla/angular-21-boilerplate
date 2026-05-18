@@ -1,17 +1,284 @@
-/* You can add global styles to this file, and also import other style files */
+/* Google Font - cute rounded look */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+/* Moshi Mochi Color Palette */
+@bg-color: #e6f0fa;
+@grid-color: #d2e6fa;
+@panel-bg: #f4f9ff;
+@border-color: #8ebcf0;
+@text-color: #4a78b5;
+@btn-blue: #a3c9fc;
+@btn-blue-hover: #8ebaf2;
+@btn-yellow: #fde484;
+@btn-yellow-hover: #f5d46e;
+@danger-color: #ffb3c1;
+@danger-border: #ff8fa3;
+@success-bg: #d1f5d3;
+@success-border: #8bd46c;
+
+body {
+    font-family: 'Nunito', sans-serif !important;
+    background-color: @bg-color !important;
+    /* Cute grid pattern background */
+    background-image: 
+        linear-gradient(@grid-color 2px, transparent 2px),
+        linear-gradient(90deg, @grid-color 2px, transparent 2px);
+    background-size: 40px 40px;
+    color: @text-color !important;
+    min-height: 100vh;
+}
+
+/* App container */
 .app-container {
-    min-height: 320px;
+    min-height: 100vh;
+    padding: 20px;
 }
 
+/* Make Bootstrap backgrounds transparent to show our grid */
+.bg-light, .bg-white {
+    background-color: transparent !important;
+}
+
+/* Navbar / Top Navigation */
+.navbar.bg-dark, .admin-nav {
+    background-color: @panel-bg !important;
+    border: 4px solid @border-color !important;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 0 @border-color;
+    padding: 10px 20px !important;
+    position: relative;
+    overflow: visible;
+}
+
+/* Add a little cute cloud to the navbar */
+.navbar.bg-dark::after {
+    content: '☁️';
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 0 @border-color);
+}
+
+.navbar .nav-item {
+    color: @text-color !important;
+    font-weight: 800;
+    margin: 0 5px;
+    border-radius: 15px;
+    padding: 8px 15px !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .nav-item:hover, .navbar .nav-item.active {
+    background-color: @btn-yellow;
+    color: #8c6a0c !important;
+    box-shadow: 0 3px 0 #e6c54a;
+    transform: translateY(-2px);
+}
+
+/* Admin specific nav */
 .admin-nav {
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: #e8e9ea;
-    border-bottom: 1px solid #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
+/* Cards (Bootstrap Override) */
+.card {
+    background-color: @panel-bg !important;
+    border: 4px solid @border-color !important;
+    border-radius: 25px !important;
+    box-shadow: 0 8px 0 @border-color !important;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: visible; /* to allow decorations to pop out */
+}
+
+/* Card decorations */
+.card::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 1.5rem;
+    z-index: 10;
+}
+
+.card-header {
+    background-color: #e1efff !important;
+    border-bottom: 4px solid @border-color !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: @text-color;
+    padding: 20px 25px !important;
+    border-radius: 21px 21px 0 0 !important; /* to match card radius inside border */
+}
+
+.card-body {
+    padding: 30px !important;
+}
+
+/* Form Controls */
+.form-label {
+    font-weight: 700;
+    color: @text-color;
+    font-size: 1.1rem;
+    margin-left: 5px;
+}
+
+.form-control, .form-select {
+    border: 3px solid @border-color !important;
+    border-radius: 15px !important;
+    padding: 12px 20px !important;
+    font-weight: 600;
+    color: @text-color !important;
+    background-color: #fff !important;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 0 4px rgba(142, 188, 240, 0.4) !important;
+    border-color: @border-color !important;
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 18px !important;
+    font-weight: 800 !important;
+    border: 3px solid @border-color !important;
+    padding: 10px 25px !important;
+    box-shadow: 0 5px 0 @border-color;
+    transition: all 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem;
+}
+
+.btn:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 @border-color !important;
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: @btn-blue !important;
+    color: #2a5a94 !important;
+}
+.btn-primary:hover {
+    background-color: @btn-blue-hover !important;
+}
+
+/* Success Button */
+.btn-success {
+    background-color: @btn-yellow !important;
+    color: #8c6a0c !important;
+    border-color: #e6c54a !important;
+    box-shadow: 0 5px 0 #e6c54a !important;
+}
+.btn-success:active {
+    box-shadow: 0 0 0 #e6c54a !important;
+}
+.btn-success:hover {
+    background-color: @btn-yellow-hover !important;
+}
+
+/* Danger Button */
+.btn-danger {
+    background-color: @danger-color !important;
+    border-color: @danger-border !important;
+    color: #9e2a3f !important;
+    box-shadow: 0 5px 0 @danger-border !important;
+}
+.btn-danger:active {
+    box-shadow: 0 0 0 @danger-border !important;
+}
+
+/* Link Button */
+.btn-link {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-transform: none;
+    font-weight: 700 !important;
+    color: @text-color !important;
+    text-decoration: underline;
+}
+.btn-link:active {
+    transform: translateY(2px);
+}
+.btn-link:hover {
+    color: #31588a !important;
+}
+
+/* Tables */
+.table {
+    color: @text-color !important;
+    background-color: transparent !important;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+.table th {
+    border: none !important;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    background-color: #e1efff;
+    padding: 15px !important;
+}
+.table th:first-child {
+    border-radius: 15px 0 0 15px;
+}
+.table th:last-child {
+    border-radius: 0 15px 15px 0;
+}
+.table td {
+    background-color: #fff;
+    border-top: 3px solid @border-color !important;
+    border-bottom: 3px solid @border-color !important;
+    vertical-align: middle;
+    padding: 15px !important;
+}
+.table td:first-child {
+    border-left: 3px solid @border-color !important;
+    border-radius: 15px 0 0 15px;
+}
+.table td:last-child {
+    border-right: 3px solid @border-color !important;
+    border-radius: 0 15px 15px 0;
+}
+
+/* Badges */
+.badge {
+    border-radius: 12px !important;
+    padding: 6px 12px !important;
+    font-size: 0.85em !important;
+    font-weight: 700;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 20px !important;
+    border: 4px solid @border-color !important;
+    font-weight: 800;
+    box-shadow: 0 5px 0 @border-color;
+}
+.alert-danger {
+    background-color: #ffe6ea !important;
+    border-color: @danger-border !important;
+    color: #b52b45 !important;
+    box-shadow: 0 5px 0 @danger-border;
+}
+.alert-success {
+    background-color: @success-bg !important;
+    border-color: @success-border !important;
+    color: #3b7522 !important;
+    box-shadow: 0 5px 0 @success-border;
+}
+
+/* Utility buttons */
 .btn-delete-account {
-    width: 40px;
+    width: 60px;
     text-align: center;
     box-sizing: content-box;
 }
